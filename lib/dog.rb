@@ -40,6 +40,10 @@ class Dog
     self.new_from_db(DB[:conn].execute(sql, name).first)
   end
 
+  def self.create(dog_hash)
+    self.new(name: dog_hash[:name], breed: dog_hash[:breed])
+  end
+
   def update
     sql = <<-SQL
       UPDATE dogs
